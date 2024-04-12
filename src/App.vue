@@ -12,6 +12,13 @@ import HelloWorld from './components/HelloWorld.vue'
     </a>
   </div>
   <HelloWorld msg="Vite + Vue" />
+
+
+  <div class ="bg-red-800">
+    <h1 class=" text-7xl text-yellow-400 font-bold"> FUERTE FUERTE </h1>
+  </div>
+
+
 </template>
 
 <style scoped>
