@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // import HelloWorld from './components/HelloWorld.vue'
-  import SismologicalPage from './components/SismologicalPage.vue';
+  import SismologicalPage from './components/Pages/SismologicalPage.vue';
 </script>
 
 <template>
