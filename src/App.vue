@@ -1,16 +1,20 @@
 <script setup lang="ts">
 // import HelloWorld from './components/HelloWorld.vue'
   import SismologicalPage from './components/Pages/SismologicalPage.vue';
+  import TopBarComponent from './components/Commons/TopBarComponent.vue';
 </script>
 
 <template>
-  
-  <SismologicalPage/>
+  <div >
 
-
-  <div class ="bg-red-800">
-    <h1 class=" text-7xl text-yellow-400 font-bold"> FUERTE FUERTE </h1>
+    <TopBarComponent/>
+    <SismologicalPage/>
+    
   </div>
+
+  <!-- <div class ="bg-red-800">
+    <h1 class=" text-7xl text-yellow-400 font-bold"> FUERTE FUERTE </h1>
+  </div> -->
 
 
 </template>
