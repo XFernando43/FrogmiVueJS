@@ -1,30 +1,51 @@
 <template>
   <div class="flex flex-col justify-center items-center p-10 gap-12">
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3904.79692287466!2d-77.08374282585076!3d-11.849484038257078!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105d6b8edc07263%3A0xc8884fcd8baff4a0!2sAv.%20las%20Vi%C3%B1as%20760%2C%20Puente%20Piedra%2015121!5e0!3m2!1ses-419!2spe!4v1712953937924!5m2!1ses-419!2spe"
-      class="maps shadow-2xl"
-      allowfullscreen="false"
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-    ></iframe>
+    <div id="map" class="maps shadow-2xl"></div>
+
+
     <CommentsComponent />
 
-   
   </div>
 </template>
 
 <script lang="ts">
 import CommentsComponent from "../components/Comments/Comments.component.vue";
-
 export default {
   data() {
     return {
       reports: [],
       comments: [],
+      map: null,
     };
   },
-  methods:{
+  mounted() {
+    this.initMap();
+  },
+  methods: {
+    async initMap(): Promise<void> {
+      // The location of Uluru
+      const position = { lat: -25.344, lng: 131.031 };
 
+      // Request needed libraries.
+      const { Map } = await google.maps.importLibrary("maps") as google.maps.MapsLibrary;
+
+      // The map, centered at Uluru
+      this.map = new Map(
+        document.getElementById('map') as HTMLElement,
+        {
+          zoom: 4,
+          center: position,
+          mapId: 'DEMO_MAP_ID',
+        }
+      );
+
+      // The marker, positioned at Uluru
+      const marker = new google.maps.Marker({
+        map: this.map,
+        position: position,
+        title: 'Uluru'
+      });
+    }
   },
   components: {
     CommentsComponent,
