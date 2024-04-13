@@ -1,13 +1,35 @@
 <template>
-  <div v-for="(feature, index) in features" :key="index" class="flex flex-col gap-10">
-    <div class=" bg-emerald-400 w-full rounded-lg">
-        <h1>Location: {{ feature.properties.place }}</h1>
-        <p>{{ feature.properties.mag }}</p>
-        <img src="https://earthquake.usgs.gov/earthquakes/eventpage/hv74169732" />
+
+
+
+  <div class="flex flex-col gap-10 p-4 items-center">
+    <div v-for="(feature, index) in features" :key="index" class="bg-emerald-400 p-4 rounded-lg shadow-md" style="width: 890px;">
+        <h2 class="text-lg font-semibold text-white mb-2">{{ feature.properties.type }}</h2>
+        <div class="flex justify-between">
+            <p class="text-white">Location: {{ feature.properties.place }}</p>
+            <p class="text-white">Mag: {{ feature.properties.mag }}</p>
+        </div>
+        <p class="text-white">{{ feature.properties.title }}</p>
+        <div class="flex fle-row justify-between items-center">
+          <a :href="feature.properties.url" target="_blank" class="text-white hover:underline">More info</a>
+          <button class="bg-red-400 p-2 rounded-lg">
+            
+            <RouterLink to="/report">
+              Sign In
+
+
+            </RouterLink>
+
+          </button>  
+        </div>
         
     </div>  
   </div>
+
+
+
 </template>
+
 
 <script lang="ts">
 export default {
@@ -396,4 +418,10 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+
+
+
+
+
+</style>

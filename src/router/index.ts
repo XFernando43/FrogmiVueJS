@@ -7,14 +7,14 @@ const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes:[
         {
-            path: '/Etrade',
-            name: '',
-            component: SismologicalPage
-        },
-        {
             path: '/home',
             name: 'home',
             component: ReportsPage
+        },
+        {
+            path: '/report',
+            name: 'report',
+            component: SismologicalPage
         },
     ]
 })
