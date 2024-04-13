@@ -1,17 +1,22 @@
-import { createRouter, createWebHashHistory } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
+// import HomePage from "../pages/HomePage.vue";
 import SismologicalPage from "../pages/SismologicalPage.vue";
-
-const routes = [
-    {
-        path: '',
-        // name: 'reports',
-        component: SismologicalPage
-    },
-];
+import ReportsPage from "../pages/ReportsPage.vue";
 
 const router = createRouter({
-    history: createWebHashHistory(import.meta.env.BASE_URL),
-    routes
+    history: createWebHistory(import.meta.env.BASE_URL),
+    routes:[
+        {
+            path: '/Etrade',
+            name: '',
+            component: SismologicalPage
+        },
+        {
+            path: '/home',
+            name: 'home',
+            component: ReportsPage
+        },
+    ]
 })
 
 export default router;
