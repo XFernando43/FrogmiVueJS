@@ -1,23 +1,29 @@
 <template>
-  <div class="flex flex-col gap-10 p-4 items-center">
-
-    <div v-for="(feature, index) in features" :key="index" class="card-animation bg-teal-700 p-4 rounded-lg shadow-2xl md:w-3/4 lg: max-w-4xl">
-      <h2 class="text-lg font-semibold text-white mb-2">{{ feature.properties.type }}</h2>
-      <div class="flex flex-col sm:flex-row justify-between">
+  <div class="flex flex-col gap-10 p-8 items-center">
+    
+    <!-- ---------------------- -->
+    <div v-for="(feature, index) in features" :key="index" class="flex flex-row gap-8 justify-between items-center card-animation bg-teal-700 p-5 rounded-lg shadow-2xl md:w-3/4 lg: max-w-4xl">      
+      <div class="flex flex-col max-w-96 Slabo">
+        <h2 class="uppercase text-lg font-black text-white mb-2 ">{{ feature.properties.type }}</h2>
+        <p class="text-white">{{ feature.properties.title }}</p>
         <p class="text-white mb-2 sm:mb-0">Location: {{ feature.properties.place }}</p>
         <p class="text-white">Mag: {{ feature.properties.mag }}</p>
-      </div>
-      <p class="text-white">{{ feature.properties.title }}</p>
-      
-      <div class=" pt-5 flex flex-col sm:flex-row justify-between items-center ">
-        <a :href="feature.properties.url" target="_blank" class="bg-red-400 p-3 rounded-lg text-white hover:underline mb-2 sm:mb-0">More info</a>
-        <RouterLink to="/report" class="inline-block">
-          <button class=" bg-green-950 text-white p-2 rounded-lg">
-            More Information
-          </button>
-        </RouterLink>
+        <p class="text-white">Tsunami: {{ feature.properties.tsunami }}</p>
+        <p class="text-white">code: {{ feature.properties.code }}</p>
+        
+        <p class="text-white">
+          Alert: {{ feature.properties.alert ? 'true' : 'false' }}
+        </p>
+
+        <div class="pt-5 flex flex-col sm:flex-row justify-between items-center">
+          <a :href="feature.properties.url" target="_blank" class="bg-red-400 p-3 rounded-lg text-white hover:underline mb-2 sm:mb-0">More info</a>
+          <RouterLink to="/report" class="inline-block"> <button class=" bg-green-950 text-white p-2 rounded-lg"> More Information </button></RouterLink>
+        </div>
       </div>
 
+      <div class=" shadow-2xl rounded-md border-4 border-white">
+        <img class="bg-cover" src="https://ichef.bbci.co.uk/ace/ws/304/amz/worldservice/live/assets/images/2014/05/06/140506111542_mapa_sismos_304x171_usnwspacifictsunamiwarningcenterptwc.jpg" />
+      </div>
 
     </div>
 
