@@ -1,20 +1,12 @@
 <script setup lang="ts">
-  import SismologicalPage from './pages/SismologicalPage.vue';
   import TopBarComponent from './components/Commons/TopBarComponent.vue';
 </script>
 
 <template>
-  <div >
 
-    <TopBarComponent/>
-    <SismologicalPage/>
-    
-  </div>
+  <TopBarComponent/>
 
-  <!-- <div class ="bg-red-800">
-    <h1 class=" text-7xl text-yellow-400 font-bold"> FUERTE FUERTE </h1>
-  </div> -->
-
+  <RouterView/>
 
 </template>
 
