@@ -1,34 +1,30 @@
 <template>
-
-
-
   <div class="flex flex-col gap-10 p-4 items-center">
-    <div v-for="(feature, index) in features" :key="index" class="bg-emerald-400 p-4 rounded-lg shadow-md" style="width: 890px;">
-        <h2 class="text-lg font-semibold text-white mb-2">{{ feature.properties.type }}</h2>
-        <div class="flex justify-between">
-            <p class="text-white">Location: {{ feature.properties.place }}</p>
-            <p class="text-white">Mag: {{ feature.properties.mag }}</p>
-        </div>
-        <p class="text-white">{{ feature.properties.title }}</p>
-        <div class="flex fle-row justify-between items-center">
-          <a :href="feature.properties.url" target="_blank" class="text-white hover:underline">More info</a>
-          <button class="bg-red-400 p-2 rounded-lg">
-            
-            <RouterLink to="/report">
-              Sign In
+
+    <div v-for="(feature, index) in features" :key="index" class="card-animation bg-teal-700 p-4 rounded-lg shadow-2xl md:w-3/4 lg: max-w-4xl">
+      <h2 class="text-lg font-semibold text-white mb-2">{{ feature.properties.type }}</h2>
+      <div class="flex flex-col sm:flex-row justify-between">
+        <p class="text-white mb-2 sm:mb-0">Location: {{ feature.properties.place }}</p>
+        <p class="text-white">Mag: {{ feature.properties.mag }}</p>
+      </div>
+      <p class="text-white">{{ feature.properties.title }}</p>
+      
+      <div class=" pt-5 flex flex-col sm:flex-row justify-between items-center ">
+        <a :href="feature.properties.url" target="_blank" class="bg-red-400 p-3 rounded-lg text-white hover:underline mb-2 sm:mb-0">More info</a>
+        <RouterLink to="/report" class="inline-block">
+          <button class=" bg-green-950 text-white p-2 rounded-lg">
+            More Information
+          </button>
+        </RouterLink>
+      </div>
 
 
-            </RouterLink>
+    </div>
 
-          </button>  
-        </div>
-        
-    </div>  
   </div>
 
-
-
 </template>
+
 
 
 <script lang="ts">
@@ -420,7 +416,19 @@ export default {
 
 <style scoped>
 
+  /* @keyframes grow {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.5);
+    }
+  } */
 
+  .card-animation:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+  }
 
 
 
