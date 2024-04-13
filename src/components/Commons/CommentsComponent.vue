@@ -1,21 +1,16 @@
 <template>
-  <div class="container bg-red-400 shadow-2xl p-4 rounded-lg">
-    <h2 class="font-semibold text-2xl Slabe text-left">Comments:</h2>
+  <div class="container bg-slate-200 shadow-2xl p-4 rounded-lg overflow-auto">
+    <h2 class="pl-5 font-semibold text-2xl Slabe text-left">Comments:</h2>
     <!-- <textarea name="textarea" rows="10" cols="50">Write something here</textarea>
     -->
 
-    <div class="flex flex-col p-5 bg-slate-600">
-
-        <div class="flex flex-col bg-slate-400 p-4" v-for="(comment, index) in comments" :key="index">
-
-            <div class="flex flex-col bg-slate-300 p-4">
-                <h3 class=" rounded-xl text-lg font-semibold">{{ comment.owner }}</h3>
-                <p class=" Slabe font-mono">{{ comment.text }}</p>
-            </div>
-
+    <div class="flex flex-col p-4" v-for="(comment, index) in comments" :key="index">
+        <div class="flex flex-col bg-slate-300 p-4 rounded-md">
+            <h3 class=" rounded-xl text-lg font-semibold">{{ comment.owner }}</h3>
+            <p class=" Slabe font-mono">{{ comment.text }}</p>
         </div>
-
     </div>
+
 
 
   </div>
@@ -42,6 +37,78 @@ export default {
           owner: "Ana Martínez",
           text: "¡Increíble trabajo! Me encantaría ver más contenido como este en el futuro.",
         },
+        {
+          owner: "Ana Martínez",
+          text: "¡Increíble trabajo! Me encantaría ver más contenido como este en el futuro.",
+        },
+        {
+          owner: "Ana Martínez",
+          text: "¡Increíble trabajo! Me encantaría ver más contenido como este en el futuro.",
+        },
+        {
+          owner: "Ana Martínez",
+          text: "¡Increíble trabajo! Me encantaría ver más contenido como este en el futuro.",
+        },
+        {
+          owner: "Ana Martínez",
+          text: "¡Increíble trabajo! Me encantaría ver más contenido como este en el futuro.",
+        },
+        {
+          owner: "Ana Martínez",
+          text: "¡Increíble trabajo! Me encantaría ver más contenido como este en el futuro.",
+        },
+        {
+          owner: "Ana Martínez",
+          text: "¡Increíble trabajo! Me encantaría ver más contenido como este en el futuro.",
+        },
+        {
+          owner: "Ana Martínez",
+          text: "¡Increíble trabajo! Me encantaría ver más contenido como este en el futuro.",
+        },
+        {
+          owner: "Ana Martínez",
+          text: "¡Increíble trabajo! Me encantaría ver más contenido como este en el futuro.",
+        },
+        {
+          owner: "Ana Martínez",
+          text: "¡Increíble trabajo! Me encantaría ver más contenido como este en el futuro.",
+        },
+        {
+          owner: "Ana Martínez",
+          text: "¡Increíble trabajo! Me encantaría ver más contenido como este en el futuro.",
+        },
+        {
+          owner: "Ana Martínez",
+          text: "¡Increíble trabajo! Me encantaría ver más contenido como este en el futuro.",
+        },
+        {
+          owner: "Ana Martínez",
+          text: "¡Increíble trabajo! Me encantaría ver más contenido como este en el futuro.",
+        },
+        {
+          owner: "Ana Martínez",
+          text: "¡Increíble trabajo! Me encantaría ver más contenido como este en el futuro.",
+        },
+        {
+          owner: "Ana Martínez",
+          text: "¡Increíble trabajo! Me encantaría ver más contenido como este en el futuro.",
+        },
+        {
+          owner: "Ana Martínez",
+          text: "¡Increíble trabajo! Me encantaría ver más contenido como este en el futuro.",
+        },
+        {
+          owner: "Ana Martínez",
+          text: "¡Increíble trabajo! Me encantaría ver más contenido como este en el futuro.",
+        },
+        {
+          owner: "Ana Martínez",
+          text: "¡Increíble trabajo! Me encantaría ver más contenido como este en el futuro.",
+        },
+        {
+          owner: "Ana Martínez",
+          text: "¡Increíble trabajo! Me encantaría ver más contenido como este en el futuro.",
+        },
       ],
     };
   },
@@ -51,6 +118,8 @@ export default {
 <style scoped>
 .container {
   max-width: 1400px;
-  height: 600px;
+  /* height: 100%; */
+  height: 550px;
 }
+
 </style>
