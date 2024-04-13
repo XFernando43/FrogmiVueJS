@@ -1,6 +1,5 @@
 <script setup lang="ts">
-// import HelloWorld from './components/HelloWorld.vue'
-  import SismologicalPage from './components/Pages/SismologicalPage.vue';
+  import SismologicalPage from './pages/SismologicalPage.vue';
   import TopBarComponent from './components/Commons/TopBarComponent.vue';
 </script>
 
