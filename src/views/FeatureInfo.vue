@@ -1,29 +1,37 @@
 <template>
   <div class="flex flex-col justify-center items-center p-10 gap-12">
+    
+    <h1>Report for Feature ID: {{ $route.params.id }}</h1>
+
     <div id="map" class="maps shadow-2xl"></div>
-
-
     <CommentsComponent />
 
   </div>
 </template>
 
 <script lang="ts">
-import CommentsComponent from "../components/Comments/Comments.component.vue";
+  import CommentsComponent from "../components/Comments/Comments.component.vue";
+  import { mapActions, mapState } from 'pinia';
+  import { useFeatureStore } from "../stores/features";
+
 export default {
   data() {
     return {
-      reports: [],
-      comments: [],
       map: null,
     };
   },
   mounted() {
     this.initMap();
+    const featureId = this.$route.params.id;
+    this.getFeatureByID(Number(featureId));
+    
+    
+    
+    
   },
   methods: {
     async initMap(): Promise<void> {
-      const position = { lat: -25.344, lng: 131.031 };
+      const position = { lat: this.feature?.latitude, lng: this.feature?.longitude };
       const { Map } = await google.maps.importLibrary("maps") as google.maps.MapsLibrary;
       this.map = new Map(
         document.getElementById('map') as HTMLElement,
@@ -38,11 +46,15 @@ export default {
         position: position,
         title: 'Uluru'
       });
-    }
+    },
+    ...mapActions(useFeatureStore,['getFeatureByID'])
   },
   components: {
     CommentsComponent,
   },
+  computed:{
+    ...mapState(useFeatureStore,['features','feature'])
+  }
 };
 </script>
 

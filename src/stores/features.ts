@@ -4,6 +4,7 @@ import { Feature } from "../models/feature.model";
 export const useFeatureStore = defineStore("features", {
   state: () => ({
     features: [] as Feature[],
+    feature: null,
     currentPage: 1,
   }),
   getters: {},
@@ -37,16 +38,25 @@ export const useFeatureStore = defineStore("features", {
         this.fetchFeatures(this.currentPage);
       }
     },
-    getTsunamiText(indice:number){
-        const aux = this.features.find((feature)=> feature.id === indice);
-        return aux?.tsunami ? 'False':'True';
+    getTsunamiText(indice: number) {
+      const aux = this.features.find((feature) => feature.id === indice);
+      return aux?.tsunami ? "False" : "True";
     },
-    getFeatureByID(id:number){
-      const featureFinded = this.features.find((feature)=> feature.id === id);
-      if(featureFinded){
-        // return featureFinded;
-        console.log(featureFinded);
+    async getFeatureByID(id: number) {
+      try {
+        const response = await fetch(
+          `http://localhost:3000/api/v1/reports/${id}`
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch features");
+        }
+        const data = await response.json();
+        this.feature = data.data;
+        console.log(this.feature);
+      } catch (error) {
+        console.error("Error fetching features:", error);
+        throw error;
       }
-    }
+    },
   },
 });

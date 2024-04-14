@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import ReportsPage from "../views/ReportsPage.vue";
-import SismologicalPage from "../views/SismologicalPage.vue";
+import FeatureInfo from "../views/FeatureInfo.vue";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -11,9 +11,9 @@ const router = createRouter({
             component: ReportsPage
         },
         {
-            path: '/report',
+            path: '/report/:id',
             name: 'report',
-            component: SismologicalPage
+            component: FeatureInfo
         },
     ]
 })
