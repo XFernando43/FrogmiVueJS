@@ -3,15 +3,14 @@
     <div class="overflow-x-auto Slabo">
       <table class="min-w-full border border-gray-400">
         <thead
-          class="border-2 text-sm font-semibold text-gray-500 uppercase tracking-wider"
-        >
+          class=" bg-violet-600 border-2 text-sm font-semibold text-white uppercase tracking-wider">
           <tr>
             <th class="px-6 py-3 border-r-4">ID</th>
             <th class="px-6 py-3 border-r-4">Title</th>
             <th class="px-6 py-3 border-r-4">Place</th>
             <th class="px-6 py-3 border-r-4">Mag</th>
-            <th class="px-6 py-3 border-r-4">Tsunami</th>
             <th class="px-6 py-3 border-r-4">Location</th>
+            <th class="px-6 py-3 border-r-4">Tsunami</th>
             <th class="px-6 py-3 border-r-4">Actions</th>
           </tr>
         </thead>
@@ -25,10 +24,10 @@
             <td class="px-6 border-r-4 py-4">{{ feature.title }}</td>
             <td class="px-6 border-r-4 py-4">{{ feature.place }}</td>
             <td class="px-6 border-r-4 py-4">{{ feature.mag }}</td>
-            <td class="px-6 border-r-4 py-4">{{ getTsunamiText(feature) }}</td>
             <td class="px-6 border-r-4 py-4">
                 {{ feature.longitude }} , {{ feature.latitude }}
             </td>
+            <td class="px-6 border-r-4 py-4">{{ getTsunamiText(feature.id) }}</td>
             <td class="px-6 border-r-4 py-4 flex flex-row justify-between gap-2">
 
                 <a :href="feature.url" target="_blank" class="bg-red-400 p-3 rounded-lg text-white hover:underline mb-2 sm:mb-0">More info</a>
@@ -63,6 +62,7 @@
 <script>
 import { ref, computed } from "vue";
 import { useFeatureStore } from "../../stores/features.ts";
+import { mapActions } from 'pinia';
 
 export default {
   data() {
@@ -79,19 +79,7 @@ export default {
     },
   },
   methods: {
-    nextPage() {
-      this.currentPage++;
-      this.featureStore.fetchFeatures(this.currentPage);
-    },
-    prevPage() {
-      if (this.currentPage > 1) {
-        this.currentPage--;
-        this.featureStore.fetchFeatures(this.currentPage);
-      }
-    },
-    getTsunamiText(feature) {
-      return feature.tsunami ? "NO" : "YES";
-    },
+    ...mapActions(useFeatureStore,['nextPage','prevPage','getTsunamiText'])
   },
   mounted() {
     this.featureStore.fetchFeatures(this.currentPage);
