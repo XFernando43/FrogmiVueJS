@@ -16,7 +16,7 @@
         </thead>
         <tbody class="border-2 text-center text-gray-900">
           <tr
-            v-for="feature in paginatedFeatures"
+            v-for="feature in features"
             :key="feature.id"
             class="font-semibold border-b-4 hover:bg-indigo-500"
           >
@@ -28,13 +28,12 @@
                 {{ feature.longitude }} , {{ feature.latitude }}
             </td>
             <td class="px-6 border-r-4 py-4">{{ getTsunamiText(feature.id) }}</td>
-            <td class="px-6 border-r-4 py-4 flex flex-row justify-between gap-2">
+            <td class="px-6 border-r-4 py-4 flex flex-row items-center justify-between gap-2">
 
-                <a :href="feature.url" target="_blank" class="bg-red-400 p-3 rounded-lg text-white hover:underline mb-2 sm:mb-0">More info</a>
+                <a :href="feature.url" target="_blank" class="bg-red-400 p-3 rounded-lg text-white hover:underline mb-2 sm:mb-0">Url</a>
                 <RouterLink to="/report" class="inline-block">
-                    <button class="bg-green-950 text-white p-2 rounded-lg"> More Information </button>
+                  <button class="bg-green-950 text-white p-2 rounded-lg"> Info </button>
                 </RouterLink>
-
             </td>
             
           </tr>
@@ -57,34 +56,31 @@
       </button>
     </div>
   </div>
+
 </template>
 
-<script>
-import { ref, computed } from "vue";
-import { useFeatureStore } from "../../stores/features.ts";
-import { mapActions } from 'pinia';
+<script lang="ts">
 
-export default {
-  data() {
-    return {
-      currentPage: 1,
-    };
-  },
-  computed: {
-    featureStore() {
-      return useFeatureStore();
+  import { ref, computed } from "vue";
+  import { useFeatureStore } from "../../stores/features.ts";
+  import { mapActions, mapState } from 'pinia';
+
+  export default {
+    data() {
+      return {
+        
+      };
     },
-    paginatedFeatures() {
-      return this.featureStore.features;
+    computed: {
+      ...mapState(useFeatureStore,['currentPage','features'])
     },
-  },
-  methods: {
-    ...mapActions(useFeatureStore,['nextPage','prevPage','getTsunamiText'])
-  },
-  mounted() {
-    this.featureStore.fetchFeatures(this.currentPage);
-  },
-};
+    methods: {
+      ...mapActions(useFeatureStore,['nextPage','prevPage','getTsunamiText','fetchFeatures','getFeatureByID']),
+    },
+    mounted() {
+      this.fetchFeatures(this.currentPage);
+    },
+  };
 </script>
 
 <style scoped>

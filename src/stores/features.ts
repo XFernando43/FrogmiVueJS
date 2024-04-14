@@ -6,16 +6,12 @@ export const useFeatureStore = defineStore("features", {
     features: [] as Feature[],
     currentPage: 1,
   }),
-  getters: {
-    getFeatureByID: (state) => (id: number) => {
-      return state.features.find((feature) => feature.id === id);
-    },
-  },
+  getters: {},
   actions: {
     async fetchFeatures(pagination: number) {
       try {
         const response = await fetch(
-          `http://localhost:3000/api/v1/reports?page=${this.currentPage}&per_page=10`
+          `http://localhost:3000/api/v1/reports?page=${pagination}&per_page=10`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch features");
@@ -44,6 +40,13 @@ export const useFeatureStore = defineStore("features", {
     getTsunamiText(indice:number){
         const aux = this.features.find((feature)=> feature.id === indice);
         return aux?.tsunami ? 'False':'True';
+    },
+    getFeatureByID(id:number){
+      const featureFinded = this.features.find((feature)=> feature.id === id);
+      if(featureFinded){
+        // return featureFinded;
+        console.log(featureFinded);
+      }
     }
   },
 });
