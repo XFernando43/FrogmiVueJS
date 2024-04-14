@@ -1,37 +1,53 @@
 <template>
   <div class="flex flex-col gap-10 p-8 items-center">
-    
     <!-- ---------------------- -->
-    <div v-for="(feature, index) in features" :key="index" class="flex flex-row gap-8 justify-between items-center card-animation bg-teal-700 p-5 rounded-lg shadow-2xl md:w-3/4 lg: max-w-4xl">      
+    <div
+      v-for="(feature, index) in features"
+      :key="index"
+      class="flex flex-row gap-8 justify-between items-center card-animation bg-teal-700 p-5 rounded-lg shadow-2xl md:w-3/4 lg: max-w-4xl"
+    >
       <div class="flex flex-col max-w-96 Slabo">
-        <h2 class="uppercase text-lg font-black text-white mb-2 ">{{ feature.properties.type }}</h2>
+        <h2 class="uppercase text-lg font-black text-white mb-2">
+          {{ feature.properties.type }}
+        </h2>
         <p class="text-white">{{ feature.properties.title }}</p>
-        <p class="text-white mb-2 sm:mb-0">Location: {{ feature.properties.place }}</p>
+        <p class="text-white mb-2 sm:mb-0">
+          Location: {{ feature.properties.place }}
+        </p>
         <p class="text-white">Mag: {{ feature.properties.mag }}</p>
         <p class="text-white">Tsunami: {{ feature.properties.tsunami }}</p>
         <p class="text-white">code: {{ feature.properties.code }}</p>
-        
+
         <p class="text-white">
-          Alert: {{ feature.properties.alert ? 'true' : 'false' }}
+          Alert: {{ feature.properties.alert ? "true" : "false" }}
         </p>
 
-        <div class="pt-5 flex flex-col sm:flex-row justify-between items-center">
-          <a :href="feature.properties.url" target="_blank" class="bg-red-400 p-3 rounded-lg text-white hover:underline mb-2 sm:mb-0">More info</a>
-          <RouterLink to="/report" class="inline-block"> <button class=" bg-green-950 text-white p-2 rounded-lg"> More Information </button></RouterLink>
+        <div
+          class="pt-5 flex flex-col sm:flex-row justify-between items-center"
+        >
+          <a
+            :href="feature.properties.url"
+            target="_blank"
+            class="bg-red-400 p-3 rounded-lg text-white hover:underline mb-2 sm:mb-0"
+            >More info</a
+          >
+          <RouterLink to="/report" class="inline-block">
+            <button class="bg-green-950 text-white p-2 rounded-lg">
+              More Information
+            </button></RouterLink
+          >
         </div>
       </div>
 
-      <div class=" shadow-2xl rounded-md border-4 border-white">
-        <img class="bg-cover" src="https://ichef.bbci.co.uk/ace/ws/304/amz/worldservice/live/assets/images/2014/05/06/140506111542_mapa_sismos_304x171_usnwspacifictsunamiwarningcenterptwc.jpg" />
+      <div class="shadow-2xl rounded-md border-4 border-white">
+        <img
+          class="bg-cover"
+          src="https://ichef.bbci.co.uk/ace/ws/304/amz/worldservice/live/assets/images/2014/05/06/140506111542_mapa_sismos_304x171_usnwspacifictsunamiwarningcenterptwc.jpg"
+        />
       </div>
-
     </div>
-
   </div>
-
 </template>
-
-
 
 <script lang="ts">
 export default {
@@ -416,13 +432,33 @@ export default {
       ],
     };
   },
-  methods: {},
+  mounted() {
+    this.getReports();
+  },
+  methods: {
+    async getReports(): Promise<void> {
+      try {
+        const response = await fetch(
+          "http://localhost:3000/api/v1/reports?page=1&per_page=1"
+        );
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        const data = await response.json();
+        console.log("Data:", data);
+        // Aquí puedes manejar los datos de la respuesta según tus necesidades
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    },
+  },
 };
 </script>
 
 <style scoped>
-
-  /* @keyframes grow {
+/* @keyframes grow {
     from {
       transform: scale(1);
     }
@@ -431,11 +467,8 @@ export default {
     }
   } */
 
-  .card-animation:hover {
-    transform: scale(1.1);
-    transition: transform 0.2s ease;
-  }
-
-
-
+.card-animation:hover {
+  transform: scale(1.1);
+  transition: transform 0.2s ease;
+}
 </style>

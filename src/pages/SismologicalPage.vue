@@ -23,23 +23,16 @@ export default {
   },
   methods: {
     async initMap(): Promise<void> {
-      // The location of Uluru
       const position = { lat: -25.344, lng: 131.031 };
-
-      // Request needed libraries.
       const { Map } = await google.maps.importLibrary("maps") as google.maps.MapsLibrary;
-
-      // The map, centered at Uluru
       this.map = new Map(
         document.getElementById('map') as HTMLElement,
         {
-          zoom: 4,
+          zoom: 12,
           center: position,
           mapId: 'DEMO_MAP_ID',
         }
       );
-
-      // The marker, positioned at Uluru
       const marker = new google.maps.Marker({
         map: this.map,
         position: position,
