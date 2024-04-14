@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { Feature } from "../models/feature.model";
 
-export const useFeatureStore = defineStore('featureStore', {
+export const useFeatureStore = defineStore('features', {
     state: () => ({
         features: [] as Feature[],
     }),
@@ -11,9 +11,9 @@ export const useFeatureStore = defineStore('featureStore', {
         }
     },
     actions: {
-        async fetchFeatures() {
+        async fetchFeatures(pagination:number) {
             try {
-                const response = await fetch('http://localhost:3000/api/v1/reports?page=1&per_page=10');
+                const response = await fetch(`http://localhost:3000/api/v1/reports?page=${pagination}&per_page=10`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch features');
                 }
