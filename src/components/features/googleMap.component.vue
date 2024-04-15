@@ -8,8 +8,8 @@ export default {
   methods: {
     async initMap(): Promise<void> {
       const position = {
-        lat: this.latitud,
-        lng: this.longitud,
+        lat: this.latitud || Number(localStorage.getItem('lat')),
+        lng: this.longitud || Number(localStorage.getItem('lng')),
       };
       const { Map } = (await google.maps.importLibrary(
         "maps"
