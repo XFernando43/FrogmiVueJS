@@ -1,11 +1,8 @@
 <template>
   <div class="container bg-slate-200 shadow-2xl p-4 rounded-lg overflow-auto">
     <h2 class="pl-5 font-semibold text-2xl Slabe text-left">Comments:</h2>
-    <!-- <textarea name="textarea" rows="10" cols="50">Write something here</textarea>
-    -->
-
-    <ComentTextArea />
-
+    
+    <!-- <ComentTextArea :reportId="reportId"/> -->
     <div
       class="flex flex-col p-4"
       v-for="(comment, index) in comments"

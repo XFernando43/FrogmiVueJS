@@ -4,7 +4,7 @@ import { Feature } from "../models/feature.model";
 export const useFeatureStore = defineStore("features", {
   state: () => ({
     features: [] as Feature[],
-    feature: null,
+    feature: {} as Feature,
     currentPage: 1,
   }),
   getters: {},
@@ -52,7 +52,7 @@ export const useFeatureStore = defineStore("features", {
         }
         const data = await response.json();
         this.feature = data.data;
-        console.log(this.feature);
+        console.log(this.feature.longitude, this.feature.latitude);
       } catch (error) {
         console.error("Error fetching features:", error);
         throw error;

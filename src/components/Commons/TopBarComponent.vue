@@ -5,7 +5,7 @@
         <div class="flex flex-row gap-5">
             <button class=" rounded-lg p-3 font-semibold text-white bg-teal-500 hover:bg-teal-600 focus:outline-none focus:bg-teal-600 transition-colors duration-300 ease-in-out transform hover:scale-105" @click="creditos">Creditos</button>
             <button class=" rounded-lg p-3 font-semibold bg-teal-500 hover:bg-teal-600 focus:outline-none focus:bg-teal-600 transition-colors duration-300 ease-in-out transform hover:scale-105">
-                <RouterLink class="text-white" to="home">
+                <RouterLink class="text-white" to="/">
                     Back
                 </RouterLink>
             </button>

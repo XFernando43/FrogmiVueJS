@@ -31,7 +31,7 @@
             <td class="px-6 border-r-4 py-4 flex flex-row items-center justify-between gap-2">
 
                 <a :href="feature.url" target="_blank" class="bg-red-400 p-3 rounded-lg text-white hover:underline mb-2 sm:mb-0">Url</a>
-                <RouterLink :to="'/report/' + feature.id" class="inline-block">
+                <RouterLink :to="'/feature/' + feature.id" class="inline-block">
                   <button class="bg-green-950 text-white p-2 rounded-lg"> Info </button>
                 </RouterLink>
             </td>

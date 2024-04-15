@@ -3,7 +3,7 @@
     <h1>Report for Feature ID: {{ $route.params.id }}</h1>
 
     <div id="map" class="maps shadow-2xl"></div>
-    <CommentsComponent :reportId="featureId" />
+    <!-- <CommentsComponent :reportId="featureId" /> -->
 
   </div>
 </template>
@@ -17,18 +17,18 @@ export default {
   data() {
     return {
       map: null,
-      featureId: 0, // Inicializa featureId como 0
+      featureId: 0,
     };
   },
   mounted() {
     this.initMap();
     this.featureId = Number(this.$route.params.id);
-    this.getFeatureByID(this.featureId); // Asegúrate de usar this.featureId aquí
+    this.getFeatureByID(this.featureId); 
     
   },
   methods: {
     async initMap(): Promise<void> {
-      const position = { lat: this.feature?.latitude, lng: this.feature?.longitude };
+      const position = { lat: this.feature.latitude, lng: this.feature.longitude };
       const { Map } = await google.maps.importLibrary("maps") as google.maps.MapsLibrary;
       this.map = new Map(
         document.getElementById('map') as HTMLElement,
@@ -38,20 +38,15 @@ export default {
           mapId: 'DEMO_MAP_ID',
         }
       );
-      const marker = new google.maps.Marker({
-        map: this.map,
-        position: position,
-        title: 'Uluru'
-      });
     },
     ...mapActions(useFeatureStore,['getFeatureByID'])
+  },
+  computed:{
+    ...mapState(useFeatureStore,['features','feature'])
   },
   components: {
     CommentsComponent,
   },
-  computed:{
-    ...mapState(useFeatureStore,['features','feature'])
-  }
 };
 </script>
 

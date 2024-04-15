@@ -25,5 +25,30 @@ export const useCommentStore = defineStore("comments", {
         throw error;
       }
     },
+
+    async postComment(featureId:number, text:string) {
+      try {
+        const url = `http://localhost:3000/api/v1/comments/${featureId}`;
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ comment: text }) 
+        });
+    
+        if (!response.ok) {
+          throw new Error("Failed to create Comment");
+        }
+    
+        const data = await response.json();
+        console.log(data);
+      } catch (error) {
+        console.error("Error creating Comment:", error);
+        throw error;
+      }
+    }
+    
+
   },
 });
