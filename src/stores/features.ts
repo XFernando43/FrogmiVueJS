@@ -19,7 +19,6 @@ export const useFeatureStore = defineStore("features", {
         }
         const data = await response.json();
         this.setFeatures(data.data);
-        console.log(data);
       } catch (error) {
         console.error("Error fetching features:", error);
         throw error;

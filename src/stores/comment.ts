@@ -17,8 +17,6 @@ export const useCommentStore = defineStore("comments", {
         }
         const data = await response.json();
         this.comments = data.comments;
-        console.log(featureId);
-        console.log(data);
       } catch (error) {
         console.error("Error fetching Comments:", error);
         throw error;

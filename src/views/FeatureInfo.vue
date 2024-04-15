@@ -10,8 +10,8 @@
 
   </div>  
 
-
   <CommentsComponent :reportId="featureId" />
+
 </div>
 
 </template>
@@ -26,11 +26,11 @@ import { useFeatureStore } from "../stores/features";
 export default {
   data() {
     return {
-      featureId: 0,
+      featureId: Number(this.$route.params.id), // aca error de los comentarios
     };
   },
   mounted() {
-    this.featureId = Number(this.$route.params.id);
+    // this.featureId = ;
     this.getFeatureByID(this.featureId);
   },
   methods: {

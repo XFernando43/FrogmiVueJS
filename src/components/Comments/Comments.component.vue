@@ -1,8 +1,6 @@
 <template>
   <div class="container bg-slate-200 shadow-2xl p-4 rounded-lg overflow-auto">
     <h2 class="pl-5 font-semibold text-2xl Slabe text-left">Comments:</h2>
-    
-    <!-- <ComentTextArea :reportId="reportId"/> -->
     <ComentTextArea :reportId="reportId"/>
     
     <div
@@ -26,9 +24,6 @@ import { useCommentStore } from "../../stores/comment";
 import { mapActions, mapState } from "pinia";
 
 export default {
-  data() {
-    return {};
-  },
   components: {
     ComentTextArea,
   },
@@ -45,6 +40,7 @@ export default {
     },
   },
   mounted() {
+    console.log(this.reportId);
     this.fetchComment(this.reportId);
   },
 };
