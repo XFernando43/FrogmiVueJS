@@ -20,6 +20,7 @@
     </div>
   </div>  
 
+
   <CommentsComponent :reportId="featureId" />
 </div>
 
@@ -66,8 +67,8 @@ export default {
         title: "Uluru",
       });
     },
+    ...mapActions(useFeatureStore, ["getFeatureByID"])
 
-    ...mapActions(useFeatureStore, ["getFeatureByID"]),
   },
   computed: {
     ...mapState(useFeatureStore, ["features", "feature"]),

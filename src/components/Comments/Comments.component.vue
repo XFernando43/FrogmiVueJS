@@ -19,7 +19,7 @@
 
   </div>
 </template>
-
+ 
 <script lang="ts">
 import ComentTextArea from "./ComentTextArea.vue";
 import { useCommentStore } from "../../stores/comment";

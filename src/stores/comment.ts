@@ -7,7 +7,7 @@ export const useCommentStore = defineStore("comments", {
   }),
   getters: {},
   actions: {
-    async fetchComment(featureId: number) {
+    async fetchComment(featureId: number) { 
       try {
         const response = await fetch(
           `http://localhost:3000/api/v1/comments/${featureId}`
@@ -17,6 +17,7 @@ export const useCommentStore = defineStore("comments", {
         }
         const data = await response.json();
         this.comments = data.comments;
+        console.log(featureId);
         console.log(data);
       } catch (error) {
         console.error("Error fetching Comments:", error);

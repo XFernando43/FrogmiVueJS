@@ -1,6 +1,5 @@
 <template>
     <featureTableComponent />
-
 </template>
 
 <script lang="ts">
