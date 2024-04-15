@@ -37,7 +37,11 @@ export const useCommentStore = defineStore("comments", {
         if (!response.ok) {
           throw new Error("Failed to create Comment");
         }
-        location.reload();
+    
+        const data = await response.json();
+        console.log(data.data);
+        let newComment = data.data;
+        this.comments.push(newComment);
       } catch (error) {
         console.error("Error creating Comment:", error);
         throw error;
