@@ -40,7 +40,6 @@
   </script>
   
   <style scoped>
-  /* Estilos personalizados para el menú */
   .nav-button {
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;

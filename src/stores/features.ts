@@ -12,7 +12,7 @@ export const useFeatureStore = defineStore("features", {
     async fetchFeatures(pagination: number) {
       try {
         const response = await fetch(
-          `http://localhost:3000/api/v1/reports?page=${pagination}&per_page=10`
+          `http://localhost:3000/api/v1/features?page=${pagination}&per_page=10`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch features");
@@ -44,7 +44,7 @@ export const useFeatureStore = defineStore("features", {
     async getFeatureByID(id: number) {
       try {
         const response = await fetch(
-          `http://localhost:3000/api/v1/reports/${id}`
+          `http://localhost:3000/api/v1/features/${id}`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch features");
