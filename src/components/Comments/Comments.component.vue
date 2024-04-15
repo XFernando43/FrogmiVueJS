@@ -3,7 +3,7 @@
     <h2 class="pl-5 font-semibold text-2xl Slabe text-left">Comments:</h2>
     
     <!-- <ComentTextArea :reportId="reportId"/> -->
-    <ComentTextArea/>
+    <ComentTextArea :reportId="reportId"/>
     
     <div
       class="flex flex-col p-4"
