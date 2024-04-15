@@ -2,20 +2,18 @@
 <div class="flex flex-col justify-center items-center p-10 gap-12">
   <h1 class="font-semibold text-2xl Roboto">Feature {{ feature.title }}</h1>    
   <div class="flex flex-col md:flex-row gap-6 content-between items-center text-white">
-    <googleMapComponent :latitud="feature.latitude" :longitud="feature.longitude"/>
-    <featureInfoComponent :_feature="feature" />
+    <googleMap :latitud="feature.latitude" :longitud="feature.longitude"/>
+    <featureInfo :_feature="feature" />
   </div>  
-  
   <CommentSection :featureId="featureId" />
-
 </div>
 
 </template>
 
 <script lang="ts">
-import googleMapComponent from "../components/features/googleMap.component.vue";
+import googleMap from "../components/features/googleMap.vue";
 import CommentSection from "../components/Comments/CommentSection.vue";
-import featureInfoComponent from "../components/features/featureInfo.component.vue";
+import featureInfo from "../components/features/featureInfo.vue";
 import { mapActions, mapState } from "pinia";
 import { useFeatureStore } from "../stores/features";
 
@@ -35,8 +33,8 @@ export default {
     ...mapState(useFeatureStore, ["feature"]),
   },
   components: {
-    googleMapComponent,
-    featureInfoComponent,
+    googleMap,
+    featureInfo,
     CommentSection
   },
 };
