@@ -1,23 +1,15 @@
 <script lang="ts">
-import { useFeatureStore } from '../../stores/features';
-import { mapActions, mapState,  } from 'pinia';
-
 export default {
   data() {
     return {
       map: null,
-      featureId: 0,
     };
   },
   methods: {
     async initMap(): Promise<void> {
-      if (!this.feature) {
-        return;
-      }
-
       const position = {
-        lat: this.feature.latitude,
-        lng: this.feature.longitude,
+        lat: this.latitud,
+        lng: this.longitud,
       };
       const { Map } = (await google.maps.importLibrary(
         "maps"
@@ -33,33 +25,33 @@ export default {
         title: "Uluru",
       });
     },
-    ...mapActions(useFeatureStore, ["getFeatureByID"])
   },
   mounted(){
     this.initMap();
-    this.featureId = Number(this.$route.params.id);
-    this.getFeatureByID(this.featureId);
   },
-  computed:{
-    ...mapState(useFeatureStore, ["features", "feature"]),
-  }
+  props:{
+    latitud:{
+      type:Number,
+      required:true,
+    },
+    longitud:{
+      type:Number,
+      required:true,
+    }
+  },
 };
 </script>
 
 <template>
-
-    <div id="map" class="maps shadow-2xl w-full md:w-1/2"></div>
-
-
+  <div id="map" class="maps shadow-2xl w-full md:w-1/2"></div>
 </template>
 
 <style scoped>
-
 .maps {
   width: 1200px;
   height: 600px;
   border: 2px solid blue;
   border-radius: 10px;
 }
-
 </style>
+

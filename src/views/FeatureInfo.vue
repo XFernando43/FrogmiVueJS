@@ -4,7 +4,7 @@
 
   <div class="flex flex-col md:flex-row gap-6 content-between items-center text-white">
     
-    <googleMapComponent />
+    <googleMapComponent :latitud="feature.latitude" :longitud="feature.longitude"/>
 
     <featureInfoComponent :_feature="feature" />
 
