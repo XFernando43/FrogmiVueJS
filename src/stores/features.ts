@@ -40,7 +40,7 @@ export const useFeatureStore = defineStore("features", {
     },
     getTsunamiText(indice: number) {
       const aux = this.features.find((feature) => feature.id === indice);
-      return aux?.tsunami ? "False" : "True";
+      return aux?.tsunami ? "True" : "False";
     },
     async getFeatureByID(id: number) {
       try {

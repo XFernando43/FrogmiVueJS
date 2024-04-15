@@ -1,8 +1,15 @@
 <template>
   <div class="flex flex-col justify-center items-center p-10 gap-12">
-    <h1>Report for Feature ID: {{ $route.params.id }}</h1>
-
-    <div id="map" class="maps shadow-2xl"></div>
+    <h1 class=" font-semibold text-2xl Roboto">Feature {{ feature.title }}</h1>    
+    <div id="map" class="maps shadow-2xl" style="position: relative;">
+      <div class=" rounded-md text-white font-semibold p-3 card-position" style="position: absolute; background-color: #232336;">
+        <p>Title:  {{ feature.title }}</p>
+        <p>Place:  {{ feature.place }}</p>
+        <p>Mag:  {{ feature.mag }}</p>
+        <p>Mag Type:  {{ feature.mag_type }}</p>
+        <p>Time:  {{ feature.time }}</p>
+      </div>
+    </div>
     <CommentsComponent :reportId="featureId" />
   </div>
 </template>
@@ -62,9 +69,15 @@ export default {
 
 <style scoped>
 .maps {
-  width: 900px;
-  height: 500px;
-  border: 5px solid blue;
-  border-radius: 20px;
+  width: 1200px;
+  height: 600px;
+  border: 2px solid blue;
+  border-radius: 10px;
 }
+
+.card-position{
+  left: 5%;
+  bottom: 5%;
+}
+
 </style>

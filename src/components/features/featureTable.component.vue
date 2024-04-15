@@ -3,7 +3,7 @@
     <div class="overflow-x-auto Slabo">
       <table class="min-w-full border border-gray-400">
         <thead
-          class=" bg-violet-600 border-2 text-sm font-semibold text-white uppercase tracking-wider">
+          class=" bg-green-600 border-2 text-sm font-semibold text-white uppercase tracking-wider">
           <tr>
             <th class="px-6 py-3 border-r-4">ID</th>
             <th class="px-6 py-3 border-r-4">Title</th>
@@ -18,7 +18,7 @@
           <tr
             v-for="feature in features"
             :key="feature.id"
-            class="font-semibold border-b-4 hover:bg-indigo-500"
+            class="font-semibold border-b-4 hover:bg-green-200"
           >
             <td class="px-6 border-r-4 py-4">{{ feature.identifier }}</td>
             <td class="px-6 border-r-4 py-4">{{ feature.title }}</td>

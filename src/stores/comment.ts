@@ -4,8 +4,6 @@ import { _Comment } from "../models/comment.model";
 export const useCommentStore = defineStore("comments", {
   state: () => ({
     comments: [] as _Comment[],
-    feature: null,
-    currentPage: 1,
   }),
   getters: {},
   actions: {

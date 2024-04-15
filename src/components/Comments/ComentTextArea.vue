@@ -10,7 +10,6 @@
             @click = "postComment(reportId,comment)">
             Post
         </button>
-
     </div>
 
 </template>
@@ -18,7 +17,6 @@
 <script lang="ts">
 import { mapActions } from 'pinia';
 import { useCommentStore } from '../../stores/comment';
-
 export default {
     data() { 
         return {
@@ -35,7 +33,4 @@ export default {
         }
     },
 }
-
 </script>
-
-<style scoped></style>
