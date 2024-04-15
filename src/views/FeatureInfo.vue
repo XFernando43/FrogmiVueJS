@@ -6,19 +6,8 @@
     
     <googleMapComponent />
 
-    <div class="rounded-xl flex flex-col gap-3 font-semibold p-5 w-full md:w-1/2" style="background-color: #232336;">
-      <h2 class="text-center font-semibold text-2xl">{{ feature.place }}</h2>
-      <div class="flex flex-col gap-2  font-serif font-normal Slabo">
-        <p>ID: {{ feature.id }}</p>
-        <p>Mag: {{ feature.mag }}</p>
-        <p>Mag Type: {{ feature.mag_type }}</p>
-        <p>Identifier: {{ feature.identifier }}</p>
-        <p>Time: {{ feature.time }}</p>
-        <p>Latitude: {{ feature.latitude }}</p>
-        <p>Longitude: {{ feature.longitude }}</p>
-        <p>Tsunami: {{ feature.tsunami }}</p>
-      </div>
-    </div>
+    <featureInfoComponent :_feature="feature" />
+
   </div>  
 
 
@@ -30,6 +19,7 @@
 <script lang="ts">
 import googleMapComponent from "../components/features/googleMap.component.vue";
 import CommentsComponent from "../components/Comments/Comments.component.vue";
+import featureInfoComponent from "../components/features/featureInfo.component.vue";
 import { mapActions, mapState } from "pinia";
 import { useFeatureStore } from "../stores/features";
 
@@ -51,7 +41,8 @@ export default {
   },
   components: {
     CommentsComponent,
-    googleMapComponent
+    googleMapComponent,
+    featureInfoComponent
   },
 };
 </script>
