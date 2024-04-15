@@ -11,7 +11,7 @@
       :key="index"
     >
       <div class="flex flex-col bg-slate-300 p-4 rounded-md">
-        <h3 class="rounded-xl text-lg font-semibold">{{ comment.created_at }}</h3>
+        <h3 class="rounded-xl text-lg font-semibold">Anna Smith</h3>
         <p class="Slabe font-mono">{{ comment.body }}</p>
       </div>
     </div>
