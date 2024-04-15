@@ -10,7 +10,7 @@ export const useCommentStore = defineStore("comments", {
     async fetchComment(featureId: number) { 
       try {
         const response = await fetch(
-          `http://localhost:3000/api/v1/comments/${featureId}`
+          `${import.meta.env.VITE_API_URL_BASE}/comments/${featureId}`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch Comments");
@@ -25,7 +25,7 @@ export const useCommentStore = defineStore("comments", {
 
     async postComment(featureId:number, text:string) {
       try {
-        const url = `http://localhost:3000/api/v1/comments/${featureId}`;
+        const url = `${import.meta.env.VITE_API_URL_BASE}/comments/${featureId}`;
         const response = await fetch(url, {
           method: 'POST',
           headers: {
