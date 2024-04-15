@@ -1,5 +1,5 @@
 <template>
-  <div class="container bg-slate-200 shadow-2xl p-4 rounded-lg overflow-auto">
+  <div class="container bg-green-200 shadow-2xl p-4 rounded-lg overflow-auto">
     <h2 class="pl-5 font-semibold text-2xl Slabe text-left">Comments:</h2>
     <ComentTextArea :reportId="reportId"/>
     
@@ -8,7 +8,7 @@
       v-for="(comment, index) in comments"
       :key="index"
     >
-      <div class="flex flex-col bg-slate-300 p-4 rounded-md">
+      <div class="flex flex-col bg-teal-500 border-2 border-zinc-100 p-4 rounded-md">
         <h3 class="rounded-xl text-lg font-semibold">Anomimo</h3>
         <p class="Slabe font-mono">{{ comment.body }}</p>
       </div>

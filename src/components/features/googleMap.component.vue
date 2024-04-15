@@ -49,7 +49,7 @@ export default {
 <style scoped>
 .maps {
   width: 1200px;
-  height: 600px;
+  height: 570px;
   border: 2px solid blue;
   border-radius: 10px;
 }
