@@ -52,7 +52,6 @@ export const useFeatureStore = defineStore("features", {
         }
         const data = await response.json();
         this.feature = data.data;
-        console.log(this.feature.longitude, this.feature.latitude);
       } catch (error) {
         console.error("Error fetching features:", error);
         throw error;

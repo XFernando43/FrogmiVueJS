@@ -7,7 +7,7 @@
             placeholder="Write something here..."></textarea>
         <button 
             class="max-w-16 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring focus:border-blue-300" 
-            @click="postComment(reportId,comment)">
+            @click = "postComment(12,comment)">
             Post
         </button>
     </div>
@@ -26,14 +26,18 @@ export default {
         } 
     },
     methods: {
-        ...mapActions(useCommentStore, ["postComment"])
-    },
-    props: {
-        reportId: {
-            type: Number,
-            required: true
+        ...mapActions(useCommentStore, ["postComment"]),
+
+        prueba(){
+            console.log(this.comment);
         }
     },
+    // props: {
+    //     reportId: {
+    //         type: Number,
+    //         required: true
+    //     }
+    // },
 }
 
 </script>

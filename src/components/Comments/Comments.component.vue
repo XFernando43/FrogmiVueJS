@@ -3,6 +3,8 @@
     <h2 class="pl-5 font-semibold text-2xl Slabe text-left">Comments:</h2>
     
     <!-- <ComentTextArea :reportId="reportId"/> -->
+    <ComentTextArea/>
+    
     <div
       class="flex flex-col p-4"
       v-for="(comment, index) in comments"

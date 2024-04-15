@@ -3,14 +3,13 @@
     <h1>Report for Feature ID: {{ $route.params.id }}</h1>
 
     <div id="map" class="maps shadow-2xl"></div>
-    <!-- <CommentsComponent :reportId="featureId" /> -->
-
+    <CommentsComponent :reportId="featureId" />
   </div>
 </template>
 
 <script lang="ts">
 import CommentsComponent from "../components/Comments/Comments.component.vue";
-import { mapActions, mapState } from 'pinia';
+import { mapActions, mapState } from "pinia";
 import { useFeatureStore } from "../stores/features";
 
 export default {
@@ -21,28 +20,39 @@ export default {
     };
   },
   mounted() {
-    this.initMap();
     this.featureId = Number(this.$route.params.id);
-    this.getFeatureByID(this.featureId); 
-    
+    this.getFeatureByID(this.featureId);
+    this.initMap();
   },
   methods: {
     async initMap(): Promise<void> {
-      const position = { lat: this.feature.latitude, lng: this.feature.longitude };
-      const { Map } = await google.maps.importLibrary("maps") as google.maps.MapsLibrary;
-      this.map = new Map(
-        document.getElementById('map') as HTMLElement,
-        {
-          zoom: 12,
-          center: position,
-          mapId: 'DEMO_MAP_ID',
-        }
-      );
+      if (!this.feature) {
+        return;
+      }
+
+      const position = {
+        lat: this.feature.latitude,
+        lng: this.feature.longitude,
+      };
+      const { Map } = (await google.maps.importLibrary(
+        "maps"
+      )) as google.maps.MapsLibrary;
+      this.map = new Map(document.getElementById("map") as HTMLElement, {
+        zoom: 12,
+        center: position,
+        mapId: "DEMO_MAP_ID",
+      });
+      new google.maps.Marker({
+        map: this.map,
+        position: position, 
+        title: "Uluru",
+      });
     },
-    ...mapActions(useFeatureStore,['getFeatureByID'])
+
+    ...mapActions(useFeatureStore, ["getFeatureByID"]),
   },
-  computed:{
-    ...mapState(useFeatureStore,['features','feature'])
+  computed: {
+    ...mapState(useFeatureStore, ["features", "feature"]),
   },
   components: {
     CommentsComponent,
